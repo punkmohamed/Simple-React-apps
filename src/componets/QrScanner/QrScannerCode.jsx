@@ -1,12 +1,17 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
 import jsQR from "jsqr";
 import { Helmet } from 'react-helmet';
+import { gsap } from "gsap";
+import useAnimation from "../../hooks/useAnimation";
+
 const QrScannerCode = () => {
     const [qrcode, setQrcode] = useState('');
     const [input, setInput] = useState('');
     const [scannedCode, setScannedCode] = useState('');
     const qrCodeRef = useRef(null);
+    const { titleRef, scanContainerRef, qrContainerRef } = useAnimation()
+
 
     const handleGenreateQrCode = () => {
         setQrcode(input);
@@ -42,6 +47,7 @@ const QrScannerCode = () => {
             }
         };
     };
+
     const handleDownload = () => {
         if (qrCodeRef.current) {
             const svgElement = qrCodeRef.current.querySelector('svg');
@@ -70,20 +76,21 @@ const QrScannerCode = () => {
             console.error('qrCodeRef is null');
         }
     };
+
     return (
         <>
             <Helmet>
                 <title>Qr code</title>
                 <meta name="description" content="This is a description of my page" />
             </Helmet>
-            <div className="text-center">
+            <div className="text-center" ref={titleRef}>
                 <h1>QR Code Generator & Scanner</h1>
             </div>
             <div className="d-flex justify-content-evenly">
-                <div>
+                <div ref={qrContainerRef}>
                     <div className="text-center d-flex flex-column justify-content-center align-items-center">
                         <input
-                            className="form-control my-4 w-100 "
+                            className="form-control my-4 w-100"
                             type="text"
                             placeholder="Enter text to generate QR code"
                             onChange={(e) => setInput(e.target.value)}
@@ -96,8 +103,7 @@ const QrScannerCode = () => {
                             Generate Code
                         </button>
                     </div>
-                    <div
-                        className="text-center mt-3">
+                    <div className="text-center mt-3">
                         <div ref={qrCodeRef}>
                             <QRCode
                                 id="qr-code"
@@ -111,7 +117,7 @@ const QrScannerCode = () => {
                         </button>
                     </div>
                 </div>
-                <div className="text-center mt-4">
+                <div className="text-center mt-4" ref={scanContainerRef}>
                     <h2>Scan a QR Code from Image</h2>
                     <input
                         type="file"
@@ -132,8 +138,6 @@ const QrScannerCode = () => {
                                 {scannedCode}
                             </h1>
                         </div>
-
-
                     )}
                 </div>
             </div>

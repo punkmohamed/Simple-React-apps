@@ -2,9 +2,11 @@ import { useEffect } from "react"
 import { useState } from "react"
 import './styles.css'
 import { Helmet } from 'react-helmet';
+import useAnimation from "../../hooks/useAnimation";
 const ScrollIndector = ({ url }) => {
     const [data, setData] = useState([])
     const [scrollValue, setScrollValue] = useState(0)
+    const { titleRef, scanContainerRef, qrContainerRef } = useAnimation()
     const fetchData = async (seturl) => {
         try {
             const response = await fetch(seturl)
@@ -35,7 +37,7 @@ const ScrollIndector = ({ url }) => {
                 <title>Scroll Indector</title>
                 <meta name="description" content="This is a description of my page" />
             </Helmet>
-            <div className="text m-5 text-center">
+            <div ref={titleRef} className="text m-5 text-center">
                 <h1>ScrollIndector</h1>
             </div>
             <div className="fixed-top " style={{ top: '70px' }}>
@@ -49,7 +51,7 @@ const ScrollIndector = ({ url }) => {
                 </div>
             </div>
             <div className="container">
-                <div className="text-center mt-5">
+                <div ref={scanContainerRef} className="text-center mt-5">
                     {data && data.length > 0 ? data.map((pro, key) => <p key={key}>{pro}</p>) : null}
                 </div>
             </div>

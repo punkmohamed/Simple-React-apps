@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import Suggestions from "./suggestions"
 import { Helmet } from 'react-helmet';
+import useAnimation from "../../hooks/useAnimation";
 const AutoCompleteSearch = () => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
@@ -9,7 +10,7 @@ const AutoCompleteSearch = () => {
     const [error, setError] = useState(null)
     const [showDropdown, setShowDropDown] = useState(false)
     const [filterUser, setFilterUser] = useState([])
-
+    const { titleRef, scanContainerRef } = useAnimation()
     const fetchUser = async () => {
         try {
             setLoading(true)
@@ -58,8 +59,8 @@ const AutoCompleteSearch = () => {
             </Helmet>
             <div className="container d-flex justify-content-center align-content-center">
                 <div className="m-5 w-50">
-                    <div className="text-center mb-3"><h1>AutoCompleteSearch</h1></div>
-                    <input type="text" value={searchValue} className="form-control" onChange={handleSearch} />
+                    <div ref={titleRef} className="text-center mb-3"><h1>AutoCompleteSearch</h1></div>
+                    <input ref={scanContainerRef} type="text" value={searchValue} className="form-control" onChange={handleSearch} />
                     {
                         showDropdown && <Suggestions handleOnClick={handleOnClick} filterUser={filterUser} />
                     }
