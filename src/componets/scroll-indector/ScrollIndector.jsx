@@ -40,7 +40,7 @@ const ScrollIndector = ({ url }) => {
             <div ref={titleRef} className="text m-5 text-center">
                 <h1>ScrollIndector</h1>
             </div>
-            <div className="fixed-top " style={{ top: '70px' }}>
+            <div className="fixed-top z-5 " style={{ top: '70px' }}>
                 <div className="scroll  w-100">
                     <div className="percent text-center"><h1>{scrollValue}%</h1></div>
                     <div className="scroll-bar" style={{
