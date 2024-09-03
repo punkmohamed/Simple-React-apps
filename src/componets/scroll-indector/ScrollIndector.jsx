@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import './styles.css'
+import { Helmet } from 'react-helmet';
 const ScrollIndector = ({ url }) => {
     const [data, setData] = useState([])
     const [scrollValue, setScrollValue] = useState(0)
@@ -30,6 +31,10 @@ const ScrollIndector = ({ url }) => {
     }, [])
     return (
         <>
+            <Helmet>
+                <title>Scroll Indector</title>
+                <meta name="description" content="This is a description of my page" />
+            </Helmet>
             <div className="text m-5 text-center">
                 <h1>ScrollIndector</h1>
             </div>

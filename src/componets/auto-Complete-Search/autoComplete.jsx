@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import Suggestions from "./suggestions"
-
+import { Helmet } from 'react-helmet';
 const AutoCompleteSearch = () => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
@@ -52,6 +52,10 @@ const AutoCompleteSearch = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Auto completion</title>
+                <meta name="description" content="This is a description of my page" />
+            </Helmet>
             <div className="container d-flex justify-content-center align-content-center">
                 <div className="m-5 w-50">
                     <div className="text-center mb-3"><h1>AutoCompleteSearch</h1></div>

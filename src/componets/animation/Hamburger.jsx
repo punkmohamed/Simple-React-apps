@@ -26,7 +26,7 @@ const cities = [
   { name: "Scroll Indicator", image: image5 }
 ];
 
-const Hamburger = ({ state }) => {
+const Hamburger = ({ state, handleMenu }) => {
 
   let menuLayer = useRef(null);
   let reveal1 = useRef(null);
@@ -81,7 +81,9 @@ const Hamburger = ({ state }) => {
                       onMouseEnter={e => handleHover(e)}
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line1 = el)}
+                      onClick={handleMenu}
                       to="/qrScannerCode">
+
                       QR Scanner
                     </Link>
                   </li>
@@ -90,6 +92,7 @@ const Hamburger = ({ state }) => {
                       onMouseEnter={e => handleHover(e)}
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line2 = el)}
+                      onClick={handleMenu}
                       to="/randomColor">
                       Random Color
                     </Link>
@@ -99,6 +102,7 @@ const Hamburger = ({ state }) => {
                       onMouseEnter={e => handleHover(e)}
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line3 = el)}
+                      onClick={handleMenu}
                       to="/lightDarkMode">
                       Light & Dark Mode
                     </Link>
@@ -113,6 +117,7 @@ const Hamburger = ({ state }) => {
                         onMouseEnter={e => handleHover(e)}
                         onMouseOut={e => handleHoverExit(e)}
                         ref={el => (line1 = el)}
+                        onClick={handleMenu}
                         to="/autoCompleteSearch">AutoComplete Search
                       </Link>
                     </li>
@@ -121,6 +126,7 @@ const Hamburger = ({ state }) => {
                         onMouseEnter={e => handleHover(e)}
                         onMouseOut={e => handleHoverExit(e)}
                         ref={el => (line2 = el)}
+                        onClick={handleMenu}
                         to="/scrollIndector">Scroll Indicator
                       </Link>
                     </li>

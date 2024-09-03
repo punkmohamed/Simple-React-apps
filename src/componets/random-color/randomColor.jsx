@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-
+import { Helmet } from 'react-helmet';
 const RandomColor = () => {
     const [colorType, setColorType] = useState('hex')
     const [color, setColor] = useState('#000000')
@@ -43,6 +43,10 @@ const RandomColor = () => {
             height: '100vh',
             background: color
         }}>
+            <Helmet>
+                <title>Random Color</title>
+                <meta name="description" content="This is a description of my page" />
+            </Helmet>
             <div className="text-center py-5 d-flex justify-content-evenly">
                 <button className="btn btn-primary" onClick={colorType === 'hex' ? changeColorHEX : changeColorRGB}>Generate Random Color</button>
                 <button className="btn btn-danger" onClick={colorHEX}>Create HEX Color</button>

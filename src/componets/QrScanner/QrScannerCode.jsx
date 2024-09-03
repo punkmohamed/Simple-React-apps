@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import QRCode from "react-qr-code";
 import jsQR from "jsqr";
-
+import { Helmet } from 'react-helmet';
 const QrScannerCode = () => {
     const [qrcode, setQrcode] = useState('');
     const [input, setInput] = useState('');
@@ -72,6 +72,10 @@ const QrScannerCode = () => {
     };
     return (
         <>
+            <Helmet>
+                <title>Qr code</title>
+                <meta name="description" content="This is a description of my page" />
+            </Helmet>
             <div className="text-center">
                 <h1>QR Code Generator & Scanner</h1>
             </div>
