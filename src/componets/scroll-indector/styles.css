@@ -1,0 +1,19 @@
+.text h1 {
+    font-size: 50px;
+    background: linear-gradient(to right, red,blue);
+    background-clip: text;
+    color: transparent;
+}
+.scroll{
+    height: 60px;
+    background-color: red;
+    position: relative;
+}
+.scroll .scroll-bar{
+background-color: green;
+width: 0;
+z-index: 2;
+height: 10px;
+position: absolute;
+bottom: 0;
+}
